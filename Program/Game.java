@@ -12,7 +12,7 @@ public class Game extends Canvas implements Runnable {
 	private final int WIDTH = 600, HEIGHT = 450;
 	private Thread thread; //only one thread; game is simple so don't need more
 	private boolean running = false;
-	private Graphics2D g; //use Graphics instead of Graphics2D
+	private Graphics2D g; //use Graphics instead of Graphics2D?
 	
 	public Game() {
 		JFrame frame = new JFrame("game"); //change title later
