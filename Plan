@@ -1,0 +1,38 @@
+Before writing program:
+
+Brainstorming
+- Modified Connect Four (see /Game description)
+
+Schedule
+- basic window + game loop by Nov. 13
+- UML diagram by Nov. 15
+- algorithm by Nov. 18
+- actual code by Nov. 21
+- fix all bugs in actual code by Nov. 22
+
+Division of labour:
+- Sameer: initialize window, design instruction screen + board + game over screen
+- Nuzhat: game logic (game loop, user input system, animation rendering, etc.)
+- Both: game description (already done), prototype, algorithm + coding (sections relating to our respective tasks)
+
+Prototype
+- display instructions to players (LEFT/RIGHT arrow keys to select column, SPACE to drop token, winner has most four-in-a-rows)
+- on SPACE pressed, get rid of instruction page and show rectangle with "holes" in 7 x 7 pattern, red token hovering over column 4, and "RED - 0" and "BLUE - 0" on top left corner of screen (0s represent respective players' scores)
+- on LEFT/RIGHT pressed, move token left/right to column
+- on SPACE pressed, drop into column directly below token (token goes to bottom-most empty slot in column)
+- change token colour to blue if last colour was red, change token colour to red if last colour was blue
+- repeat last three steps until board is filled
+    - if four in a row of one colour, draw border of rounded rectangle around four-in-a-row and colour receives one point
+- when done, display winner and play again button
+- if play again, start from repeat all steps
+
+Algorithm
+[...]
+
+------ After writing program...
+
+Test cases
+[...]
+
+Feedback
+[...]
