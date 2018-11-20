@@ -1,14 +1,20 @@
 Before writing program:
 
 Brainstorming
-- Modified Connect Four (see /Game description)
+- "Modified Connect Four"
+    - board with 7 x 5 slots (7 per row, 5 per column)
+    - each player assigned a colour (red or blue)
+    - red starts, alternating turns
+    - each player drops coloured token into column, token drops to lowest available slot in column (if none, doesn't drop)
+    - when player has four coloured tokens in a row (vertically, horizontally, or diagonally), receives one point
+    - when all slots filled, winning player and score displayed on screen (but if equal, tie)
 
 Schedule
-- basic window + game loop by Nov. 13
-- UML diagram by Nov. 15
-- algorithm by Nov. 18
-- actual code by Nov. 21
-- fix all bugs in actual code by Nov. 22
+- [ ] basic window + game loop by Nov. 13
+- [ ] UML diagram by Nov. 15
+- [ ] algorithm by Nov. 18
+- [ ] actual code by Nov. 21
+- [ ] fix all bugs in actual code by Nov. 22
 
 Division of labour:
 - Sameer: initialize window, design board for beginning of game
