@@ -18,7 +18,7 @@ Schedule
 
 Division of labour:
 - Sameer: initialize window, design board for beginning of game
-- Nuzhat: game logic (user input, animation rendering, point tracking, etc.)
+- Nuzhat: user input system, animation rendering, game logic (e.g. point tracking)
 - Both: game description, prototype, algorithm + coding (sections relating to our respective tasks)
 
 Prototype
