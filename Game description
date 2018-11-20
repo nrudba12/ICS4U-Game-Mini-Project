@@ -1,7 +1,0 @@
-modified Connect Four; two player game where:
-- board with 7 x 5 slots (7 per row, 5 per column)
-- each player assigned a colour (red or blue)
-- red starts, alternating turns
-- each player drops coloured token into column, token drops to lowest available slot in column (if none, doesn't drop)
-- when player has four coloured tokens in a row (vertically, horizontally, or diagonally), receives one point
-- when all slots filled, winning player and score displayed on screen (but if equal, tie)
