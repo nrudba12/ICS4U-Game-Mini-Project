@@ -67,7 +67,7 @@ Algorithm
     - findX(int column): [spacing] + [xshift] + [column]*([spacing] + [slotwid])
     - findY(int row): [boardheight] + [yshift] - [spacing] - [slotwid] - [row]*([spacing] - 5 + [slotwid])
 
-** RGB 120-60-0
+** RGB 130-65-0
 
 Test cases
 [...]
