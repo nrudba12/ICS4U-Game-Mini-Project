@@ -11,12 +11,12 @@ Schedule + progress:
 - [x] learn Java game basics by Nov. 10
 - [ ] UML diagram by Nov. 11
 - [x] algorithm by Nov. 14
-- [x] code basic window by Nov. 16
+- [x] code initialized window by Nov. 16
 - [x] code getting user input by Nov. 16
 - [x] code game board by Nov. 17
-- [x] code game logic by Nov. 19
-- [ ] gather feedback by Nov. 21
-- [ ] fix bugs + use feedback by Nov. 22
+- [x] code game logic by Nov. 20
+- [ ] gather feedback by Nov. 22
+- [ ] implement feedback by Nov. 25
 
 Division of labour:
 - Sameer: initialize window, design game board, get user inputs (algorithm + code)
@@ -39,59 +39,58 @@ player of that colour; update scoreboard accordingly
 has more points than another: "Player [player's colour] wins [final score]"; if tie: "Tie game [final score]")
 
 Algorithm
-- initialize window
-- create board for game (grey background, brown rectangle covered with background-coloured circles in 7 x 5 pattern)
-- display instructions on top left
-    - "> Press LEFT/RIGHT to position"
-    - "> Press SPACE to drop"
-    - "> Game over when board is full"
-    - "> Player with most rows of four wins!"
-
-- variables (referenced using []):
-    - board = image (created when game is run)
-    - bkgdcolour = RGB 240-240-240
-    - boardwid = 470, boardheight = 320
-    - spacing = 15, xshift = 80, yshift = 100
-    - slotwid = (boardwid - 8*spacing) / 7
-    - slots = two-dimensional array (size 7 x 5) to store colour (red, blue, or neither) of each slot in game board
-    - points = list to store instances of class Points (add to throughout game)
-- helper methods (ordered alphabetically; later organize in classes)
-    - findX(int column): [spacing] + [xshift] + [column]*([spacing] + [slotwid])
-    - findY(int row): [boardheight] + [yshift] - [spacing] - [slotwid] - [row]*([spacing] - 5 + [slotwid])
-
-- initialize window
-    - set size to 640 x 480
-    - disable ability for user to resize
-    - set location to centre of screen
-    - close (+ stop game) when "X" button pressed
-- game board (display on window) (whole board stored in variable [board])
-    - create grey ([bkgdcolour]) rectangle covering whole window
-    - create brown (RGB 150-75-0) [boardwid] x [boardheight] rectangle with top [yshift] away from top of screen
-    - create circles (coloured bkgdcolour) with diameter [slotwid] in 7 x 5 pattern across rectangle
-        * create each circle one by one, use for loop to iterate through each
-        - circles along each row positioned [spacing] apart
-        - circles along each column positioned [spacing - 5] apart
-    - display instructions (in bolded Arial size 14)
-        - "> Press LEFT/RIGHT to position" positioned 10 right, 20 from top
-        - "> Press SPACE to drop" positioned 1 below last
-        - "> Game over when board is full" positioned 1 below last
-        - "> Player with most rows of four wins!" positioned 1 below last
-- game loop
-    - set local variable now to current time, set local variable lastRender to current time
-    - in infinite loop:
-        - set [now] to current time
-        - check how much time has passed from [lastRender] to [now]
-        - if time passed is greater or equal to one twentieth of a second:
-            - redraw [board]
-            - iterate through [points] and use drawCircling() method associated with each object
-            - display current position (i.e. column) of hovering token (represents player)
-            - set [lastRender] to current time
-            - end of if block
-        - go back to top of loop
-- if LEFT arrow key pressed, move hovering token to nearest column to its left
-- if RIGHT arrow key pressed, move hovering token to nearest column to its right
-- if ENTER key pressed:
-    - set colour of lowest slot that's neither red nor blue under current position of hovering token to hovering token's colour
-    - check if any 
-
-** RGB 130-65-0
+- initializing:
+    - initialize window titled "Modified Connect Four"
+    - create game board (grey background, brown rectangle covered with background-coloured circles in 7 x 5 pattern)
+    - display instructions on top left
+        - "> Press LEFT/RIGHT to position"
+        - "> Press SPACE to drop"
+        - "> Game over when board is full"
+        - "> Player with most rows of four wins!"
+- game logic:
+    - display red circle hovering over fourth column of circle in game board
+    - array "slots" to represent all circles on board (size 7 x 5, each element initialized to '0')
+    - list "points" to represent every point earned (each object in "points" has its own coordinates and row-of-four type)
+    - integer "movesRemaining" to represent number of background-coloured circles on board (initialized to 35)
+    - if LEFT/RIGHT arrow key pressed, move circle to hover over its nearest left or right (depending on key pressed) column
+    - if SPACE key pressed:
+        - if no background-coloured circle below hovering circle: do nothing
+        - else:
+            - colour lowest background-coloured circle below hovering circle with the colour of hovering circle (e.g. if hovering
+            circle is red, lowest circle would be coloured red)
+            - update element representing previously background-coloured circle in "slots" to its new colour
+            - for next two steps, refer to lines 71-88
+                - check how many rows of four created (horizontally, vertically, and/or diagonally) by newly-coloured circle
+                - update scoreboard according to how many points earned by rows of four created
+            - if instructions currently in top left, initialize score board:
+                - get rid of instructions
+                - create scoreboard on top left: "Player RED - 0"; "Player BLUE - 0"
+            - if hovering circle was red, change to blue; if hovering circle was blue, change to red
+            - minus one from "movesRemaining"
+    - to check how many rows of four created by newly-coloured circle:
+        - horizontally: get colour of every circle in same row as newly-coloured circle (use "slots")
+        - vertically: get colour of every circle in same column as newly-coloured circle (use "slots")
+        - diagonally (in "/" shape): get colour of every circle in same "/"-shaped row as newly-coloured circle (use "slots")
+        - diagonally (in "\" shape): get colour of every circle in same "\"-shaped row as newly-coloured circle (use "slots")
+        - for all:
+            - check if row has any rows of four of same colour as hovering circle
+            - if not: do nothing (no new rows of four created)
+            - else:
+                - find location of left-most circle in left-most row of four (for vertical, bottom-most)
+                - check if "points" has any objects whose coordinates at same position as left-most circle in row of four and whose
+                row-of-four type is the same as the type of row of four being checked (can be horizontal, vertical, "/", or "\")
+                - if so, do nothing
+                - else:
+                    - player represented by hovering circle earns one more point
+                    - create new object with coordinates representing left-most circle (or if vertical, bottom-most) and with
+                    row-of-four type of whichever type of row of four was being checked for
+                - repeat else block for every row of four created by newly-coloured circle
+    - if "movesRemaining" equals 0:
+        - if scoreboard is tied: display "Tie game [score]!" in centre of window above hovering token
+        - else: display "Player [player with more points] wins [score]!" in centre of window above hovering token
+- game loop (renders all graphics)
+    - repeat 20 times per second:
+        - render game board
+        - for each object in "points": circle each row of four represented by object (implementation will be more specific when
+        creating actual code) with green line
+        - display hovering token using its current position and its current colour
