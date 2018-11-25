@@ -39,6 +39,14 @@ player of that colour; update scoreboard accordingly
 has more points than another: "Player [player's colour] wins [final score]"; if tie: "Tie game [final score]")
 
 Algorithm
+- initialize window
+- create board for game (grey background, brown rectangle covered with background-coloured circles in 7 x 5 pattern)
+- display instructions on top left
+    - "> Press LEFT/RIGHT to position"
+    - "> Press SPACE to drop"
+    - "> Game over when board is full"
+    - "> Player with most rows of four wins!"
+
 - variables (referenced using []):
     - board = image (created when game is run)
     - bkgdcolour = RGB 240-240-240
