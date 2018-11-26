@@ -1,0 +1,35 @@
+Test cases
+1. input: try getting tied game
+   result: expected output; "Tie game [score]!" displayed on centre of window above hovering circle
+2. input: try getting game where Player RED wins
+   result: expected output; "Player RED wins [score]!" displayed on centre of window above hovering circle
+3. input: try getting game where Player BLUE wins
+   result: expected output; "Player BLUE wins [score]!" displayed on centre of window above hovering circle
+4. input: enter random keys (anything other than LEFT/RIGHT arrow keys and SPACE key)
+   result: expected output; no effect on game
+5. input: have one player get five in a row (where their row doesn't intersect existing four in a row)
+   result: expected output; player recieves two more points
+6. input: have one player add to end of row of four (also creating five in a row)
+   result: expected output; player recieves one more point
+7. input: have player create two four in a rows: one horizontal, one "/"-shaped diagonal, both left-most slots intersecting one another
+   output: expected output; player recieves two points
+8. input: play multiple games and see if any error(s) come up
+   output: not expected output; ConcurrentModificationError occurs in class Game line 93
+
+Debug
+- fix error in Test Case #8 by surrounding with try catch (error is unpredictable and seems like no other way to solve)
+
+Feedback
+1. change game board colour to darker shade of brown
+   implementation: change board's RGB from 150-75-0 to 130-65-0
+2. add option to restart game
+   implementation:
+     - when all slots full, display "Press SPACE to restart" on top centre of window
+     - if SPACE key pressed, reset all field variables in PointTracker and Player objects used in game to whatever they were when they
+     were first instantiated and reset BufferedImage used in game to whatever it was at beginning of game (except no instructions shown)
+3. add sound effects
+   implementation:
+     - create enum SoundEffect with values TICK (associated with string "tick.wav"), RESET (associated with string
+   "reset.wav"), GAMEOVER (associated with string "gameover.wav")
+     - method play() plays .wav files (stored in Modified Connect Four/Resources) represented by each value's associated string
+     - TICK.play() when new slot coloured in, GAMEOVER.play() when game over, RESET.play() when game reset
