@@ -25,7 +25,7 @@ public class PointTracker {
 	public LinkedList<Point> getPoints() {
 		return this.points;
 	}
-	public int[] getScores() { //used by Player once all slots filled
+	public int[] getScore() { //used by Player once all slots filled
 		return new int[] {redpts, bluepts};
 	}
 	public void displayPoints(Graphics2D g2d) {
