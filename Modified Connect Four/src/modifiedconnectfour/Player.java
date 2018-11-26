@@ -79,7 +79,7 @@ public class Player {
 		g2d.setColor(Color.black);
 		g2d.setFont(new Font("Arial", Font.BOLD, 14));
 		
-		int[] scores = pointTracker.getScores(); //red first, blue second
+		int[] scores = pointTracker.getScore(); //red first, blue second
 		
 		String strToDisplay;
 		if (scores[0] == scores[1]) {
