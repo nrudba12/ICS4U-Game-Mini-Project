@@ -15,8 +15,8 @@ Schedule + progress:
 - [x] code getting user input by Nov. 16
 - [x] code game board by Nov. 17
 - [x] code game logic by Nov. 20
-- [ ] gather feedback by Nov. 22
-- [ ] implement feedback by Nov. 25
+- [x] gather feedback by Nov. 22
+- [x] implement feedback by Nov. 25
 
 Division of labour:
 - Sameer: initialize window, design game board, get user inputs (algorithm + code)
