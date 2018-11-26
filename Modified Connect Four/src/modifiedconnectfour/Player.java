@@ -24,7 +24,7 @@ public class Player {
 		this.column = 3;
 		this.movesRemaining = 7 * 5; //columns * rows = total num of slots
 	}
-	public boolean restart() { //for Game to know whether or not slots full
+	public boolean noMovesLeft() { //to check whether or not slots full
 		return movesRemaining == 0;
 	}
 	public void reset() {
