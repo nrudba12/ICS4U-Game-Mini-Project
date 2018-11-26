@@ -52,7 +52,7 @@ public class Game extends Canvas {
 				if (key == KeyEvent.VK_LEFT) player.moveLeft();
 				else if (key == KeyEvent.VK_RIGHT) player.moveRight();
 				else if (key == KeyEvent.VK_SPACE) {
-					if (!player.restart()) player.updateSlot();
+					if (!player.noMovesLeft()) player.updateSlot();
 					else { //if all slots full
 						BoardUtil.reset(board);
 						player.reset();
