@@ -1,7 +1,26 @@
-"Close" report outlining and analysing your PROCESS AND PRODUCT. For example:
 - any "lessons" learned
-- any successes earned
-- what worked, what didn't
-- did you meet expectations
+1. organize methods better: some functions need multiple methods to be called (e.g. when player clicks space, Player.noMovesLeft() called;
+if returns true, call BoardUtil.reset(board), Player.reset(), PointTracker.reset(), PointTracker.displayPoints(), SoundEffect.RESET.play();
+if returns true, call Player.updateSlot() which calls PointTracker.updatePoints(), PointTracker.displayPoints()); would often forget to
+call certain methods when doing something and whole game wouldn't work, problem avoided if methods organized better
+2. comment more: while we were creating program, very little comments; led to confusion about functions of methods, when to call, etc.
+
+- did you meet expectations & any successes earned
+yes; successfully implemented prototype (see: Planning ("Prototype" section)), successfully implemented feedback (see: Implementation
+("Feedback" section)), game fully functional, positive reviews from those who've tried finished game
+
 - what was some peer feedback
+received positive feedback (game is fun, easy to understand/play, etc.); for specific feedback, see: Implementation ("Feedback" section)
+
 - what improvements could be made
+1. Our game automatically repaints its screen every 20th of a second (we did this because we looked up the basics of developing games in
+Java, every tutorial said to do so); instead, we should have done all the painting in a paintComponent() method that would be called every
+time the game was updated (when the player moved, dropped their token, etc.) since the screen would only need to be repainted during those
+times (which happened much less often than every 20th of a second); coding a game so that it repaints automatically every few milliseconds
+only makes sense if the game's screen needs to be frequently updated (e.g. if there's a moving object in the game); we should have
+recognized that automatically repainting the screen wouldn't be right for our game even though it was suggested by online tutorials
+2. instead of repainting the whole screen every time, since the background would always stay the same (background colour and empty board)
+should have set that as background to window and relegated painting other objects (tokens on the board, instructions, etc.) to transparent
+JPanel placed on top of window; more efficient since less painting needed
+3. at beginning of game should have initialized all sounds in enum SoundEffects (i.e. called SoundsEffects.values() before creating window;
+when running, first sound always slightly late but sounds after are on time and problem would be avoided by initializing
