@@ -24,3 +24,4 @@ should have set that as background to window and relegated painting other object
 JPanel placed on top of window; more efficient since less painting needed
 3. at beginning of game should have initialized all sounds in enum SoundEffects (i.e. called SoundsEffects.values() before creating window;
 when running, first sound always slightly late but sounds after are on time and problem would be avoided by initializing
+4. set rendering hints when drawing so looks better
